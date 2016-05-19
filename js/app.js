@@ -1,5 +1,5 @@
 
-angular.module('app', [])
+angular.module('app', ['ngjsColorPicker'])
     .controller('MainController', ['$scope', function($scope) {
 
         $scope.addImage = function(image) {
@@ -11,7 +11,7 @@ angular.module('app', [])
                 $scope.canvas.renderAll();
             });
         };
-
+        $scope.labelBackground = "#e1e1e1";
         $scope.hasObjectSelected = false;
 
         $scope.deleteSelectedObject = function(){
@@ -60,6 +60,12 @@ angular.module('app', [])
             $scope.canvas.setHeight($scope.product.editableAreas[0].canvas.height);
             $scope.canvas.setWidth($scope.product.editableAreas[0].canvas.width);
 
+            $scope.canvas.backgroundColor = $scope.labelBackground;
+            $scope.$watch('labelBackground', function(newValue, oldValue) {
+                $scope.canvas.backgroundColor = newValue;
+                $scope.canvas.renderAll();
+            });
+
             var elem = angular.element(document.querySelector(".canvas-container"));
             elem.ready(function(){
                 elem.css('top', $scope.product.editableAreas[0].top + "px");
@@ -67,6 +73,7 @@ angular.module('app', [])
             });
 
             $scope.canvas.on('mouse:down', function() {
+                //to update visibility of actions, available only if object selected
                 $scope.$digest();
             });
         }

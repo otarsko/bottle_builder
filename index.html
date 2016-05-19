@@ -5,8 +5,10 @@
     <title>Bottle builder</title>
     <script src="bower_components/fabric.js/dist/fabric.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="bower_components/ngjs-color-picker/js/ngjs-color-picker.js"></script>
+    <link href="bower_components/ngjs-color-picker/css/ngjs-color-picker.css" rel="stylesheet">
 
+    <script src="js/app.js"></script>
     <link href="css/app.css" rel="stylesheet"/>
 </head>
 <body>
@@ -16,6 +18,9 @@
     <hr/>
     <div ng-repeat="image in images" ng-click="addImage(image)">
         <img class="panel" ng-src="{{image}}"/>
+    </div>
+    <div class="color_pallet">
+        <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
     </div>
     <div class="object_actions" ng-show="hasObjectOrGroupSelected()">
         <button ng-click="deleteSelectedObject()">
