@@ -10,8 +10,12 @@
     <link href="css/app.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="cavas-wrapper">
+    <div class="content_wrapper">
         <canvas id="bottle_canvas"></canvas>
+    </div>
+    <hr/>
+    <div ng-repeat="image in images">
+        <img class="panel" ng-src="{{image}}"/>
     </div>
 </body>
 </html>
