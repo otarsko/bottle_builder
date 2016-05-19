@@ -14,8 +14,13 @@
         <canvas id="bottle_canvas"></canvas>
     </div>
     <hr/>
-    <div ng-repeat="image in images">
+    <div ng-repeat="image in images" ng-click="addImage(image)">
         <img class="panel" ng-src="{{image}}"/>
+    </div>
+    <div class="object_actions" ng-show="hasObjectOrGroupSelected()">
+        <button ng-click="deleteSelectedObject()">
+            Delete selected
+        </button>
     </div>
 </body>
 </html>
