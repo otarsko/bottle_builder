@@ -33,6 +33,12 @@ angular.module('app', ['ngjsColorPicker'])
             }
         };
 
+        $scope.centerSelected = function() {
+            var activeObject = $scope.canvas.getActiveObject();
+            $scope.canvas.centerObject(activeObject);
+            $scope.canvas.renderAll();
+        };
+
         $scope.hasObjectOrGroupSelected = function() {
             var activeObject = $scope.canvas.getActiveObject(),
                 activeGroup = $scope.canvas.getActiveGroup();
@@ -70,9 +76,9 @@ angular.module('app', ['ngjsColorPicker'])
                 editableAreas: [
                     {
                         "name": "labelPanel",
-                        top: 260,
-                        left: 5,
-                        canvas: {height: 200, width: 115}
+                        top: -300,
+                        left: 3,
+                        canvas: {height: 240, width: 152}
                     }
                 ]
             };
@@ -118,6 +124,9 @@ angular.module('app', ['ngjsColorPicker'])
              var height_ratio = $scope.canvas.height / img.height;
 
              var minRatio = Math.min(width_ratio, height_ratio);
+
+            //make it 10% smaller
+            minRatio = minRatio * 0.9;
 
              return {
                  scaleX: minRatio,

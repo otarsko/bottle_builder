@@ -18,6 +18,7 @@
   "dependencies": {
     "angular": "^1.5.5",
     "fabric.js": "fabric#^1.6.2",
-    "ngjs-color-picker": "^1.0.4"
+    "ngjs-color-picker": "^1.0.4",
+    "bootstrap": "^3.3.6"
   }
 }
