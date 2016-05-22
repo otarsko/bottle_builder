@@ -40,6 +40,29 @@ angular.module('app', ['ngjsColorPicker'])
             return activeObject || activeGroup;
         };
 
+        $scope.hasTextObjectSelected = function() {
+            var activeObject = $scope.canvas.getActiveObject();
+            if (activeObject) {
+                return activeObject.get('type')==="text";
+            }
+            return false;
+        };
+
+        $scope.addText = function() {
+            var text = new fabric.Text('Text', {
+                fontSize: 15
+            });
+            $scope.canvas.centerObject(text);
+            $scope.canvas.add(text);
+            $scope.canvas.renderAll();
+        };
+
+        $scope.updateTextContent = function(textContent) {
+            var textObject = $scope.canvas.getActiveObject();
+            textObject.setText(textContent);
+            $scope.canvas.renderAll();
+        };
+
         function initProducts() {
             $scope.product = {
                 "name": "bottle",
@@ -75,6 +98,13 @@ angular.module('app', ['ngjsColorPicker'])
             $scope.canvas.on('mouse:down', function() {
                 //to update visibility of actions, available only if object selected
                 $scope.$digest();
+            });
+
+            $scope.canvas.on('object:selected', function(options, event) {
+                var object = options.target;
+                if (object && object.get('type')==="text") {
+                    $scope.selectedTextContent = object.getText();
+                }
             });
         }
 

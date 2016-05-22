@@ -19,13 +19,27 @@
     <div ng-repeat="image in images" ng-click="addImage(image)">
         <img class="panel" ng-src="{{image}}"/>
     </div>
+    <hr/>
     <div class="color_pallet">
         <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
     </div>
+    <hr/>
     <div class="object_actions" ng-show="hasObjectOrGroupSelected()">
         <button ng-click="deleteSelectedObject()">
             Delete selected
         </button>
     </div>
+    <hr/>
+    <button ng-click="addText()">
+        Add text
+    </button>
+    <hr/>
+    <div class="text_content" ng-show="hasTextObjectSelected()">
+        <input type="text" ng-model="selectedTextContent"/>
+        <button ng-click="updateTextContent(selectedTextContent)">
+            Update text
+        </button>
+    </div>
+    <hr/>
 </body>
 </html>
