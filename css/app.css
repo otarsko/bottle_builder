@@ -2,6 +2,11 @@
     height: 647px;
 }
 
+.working-area {
+    padding-left: 200px;
+    padding-bottom: 20px;
+}
+
 img.panel {
     width: 50px;
     height: 50px;

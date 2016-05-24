@@ -47,16 +47,13 @@
     </nav>
 
     <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Colors</h3>
-                </div>
-                <div class="panel-body color_pallet">
-                    <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
-                </div>
+        <div class="col-md-6 working-area">
+            <div class="content_wrapper">
+                <img src="img/bottle.png">
+                <canvas id="bottle_canvas"></canvas>
             </div>
-
+        </div>
+        <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Actions</h3>
@@ -69,13 +66,13 @@
                         <div class="btn-group" role="group">
                             <button class="btn btn-default"
                                     ng-disabled="!hasObjectOrGroupSelected()"
-                                    ng-click="deleteSelectedObject()">
-                                Delete
+                                    ng-click="centerSelected()">
+                                Center
                             </button>
                             <button class="btn btn-default"
                                     ng-disabled="!hasObjectOrGroupSelected()"
-                                    ng-click="centerSelected()">
-                                Center
+                                    ng-click="deleteSelectedObject()">
+                                Delete
                             </button>
                         </div>
                     </div>
@@ -103,12 +100,6 @@
             </div>
 
         </div>
-        <div class="col-md-6">
-            <div class="content_wrapper">
-                <img src="img/bottle.png">
-                <canvas id="bottle_canvas"></canvas>
-            </div>
-        </div>
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -116,6 +107,14 @@
                 </div>
                 <div class="panel-body">
                     <img class="panel" ng-src="{{image}}" ng-repeat="image in images" ng-click="addImage(image)"/>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Colors</h3>
+                </div>
+                <div class="panel-body color_pallet">
+                    <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
                 </div>
             </div>
         </div>
