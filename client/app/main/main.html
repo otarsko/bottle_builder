@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 working-area">
+      <div class="content_wrapper">
+        <img src="assets/images/bottle.png">
+        <canvas id="bottle_canvas"></canvas>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Actions</h3>
+        </div>
+        <div class="panel-body object_actions">
+          <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default" ng-click="$ctrl.addText()">Add text</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-default"
+                      ng-disabled="!$ctrl.hasObjectOrGroupSelected()"
+                      ng-click="$ctrl.centerSelected()">
+                Center
+              </button>
+              <button class="btn btn-default"
+                      ng-disabled="!$ctrl.hasObjectOrGroupSelected()"
+                      ng-click="$ctrl.deleteSelectedObject()">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Text</h3>
+        </div>
+        <div class="panel-body text_content">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Text"
+                   ng-disabled="!$ctrl.hasTextObjectSelected()"
+                   ng-model="$ctrl.selectedTextContent"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"
+                      ng-disabled="!$ctrl.hasTextObjectSelected()"
+                      ng-click="$ctrl.updateTextContent($ctrl.selectedTextContent)">
+                Update
+              </button>
+            </span>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Images</h3>
+        </div>
+        <div class="panel-body">
+          <img class="panel" ng-src="{{image}}" ng-repeat="image in $ctrl.images" ng-click="$ctrl.addImage(image)"/>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Colors</h3>
+        </div>
+        <div class="panel-body color_pallet">
+          <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
