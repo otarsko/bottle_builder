@@ -6,4 +6,6 @@ angular.module('bottleBuilderApp')
       url: '/',
       template: '<main></main>'
     });
+
+    //todo: state for link with bottle id
   });

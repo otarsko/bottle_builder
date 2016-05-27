@@ -2,6 +2,7 @@
 
 (function () {
 
+  //todo: separate
   class MainController {
 
     constructor($http, $scope) {
@@ -12,7 +13,6 @@
 
     $onInit() {
       var self = this;
-
       self.labelBackground = "#e1e1e1";
 
       function initProducts() {
@@ -60,11 +60,6 @@
         });
       }
 
-      function initIcons() {
-        self.images = ["assets/images/logo/ic1.png", "assets/images/logo/ic3.png",
-          "assets/images/logo/ic4.png", "assets/images/logo/ic5.png"];
-      }
-
       //make transparent corners and move rotating point closer to rectangle
       fabric.Object.prototype.set({
         transparentCorners: true,
@@ -76,7 +71,6 @@
 
       initProducts();
       initCanvas();
-      initIcons();
 
       self.canvas.renderAll();
     }
@@ -164,6 +158,20 @@
       this.canvas.centerObject(text);
       this.canvas.add(text);
       this.canvas.renderAll();
+    }
+
+    save() {
+      var self = this;
+
+      var json = JSON.stringify( this.canvas.toJSON() );
+
+      // save via xhr
+      this.$http.post('/api/bottles', { canvas : json })
+        .then(response => {
+
+          //todo: not fixed domain
+          self.savedUrl = "http://localhost:9000/" + response.data["_id"]; //wtf?
+        });
     }
   }
 

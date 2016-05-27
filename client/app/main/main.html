@@ -55,20 +55,25 @@
 
     </div>
     <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Images</h3>
-        </div>
-        <div class="panel-body">
-          <img class="panel" ng-src="{{image}}" ng-repeat="image in $ctrl.images" ng-click="$ctrl.addImage(image)"/>
-        </div>
-      </div>
+      <images-panel></images-panel>
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Colors</h3>
         </div>
         <div class="panel-body color_pallet">
           <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Actions</h3>
+        </div>
+        <div class="panel-body color_pallet">
+          <button type="button" class="btn btn-default" ng-click="$ctrl.save()">Save</button>
+          <input type="text" class="form-control" placeholder="Text"
+                 ng-show="$ctrl.savedUrl != null"
+                 ng-model="$ctrl.savedUrl"/>
         </div>
       </div>
     </div>
