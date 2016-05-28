@@ -159,20 +159,6 @@
       this.canvas.add(text);
       this.canvas.renderAll();
     }
-
-    save() {
-      var self = this;
-
-      var json = JSON.stringify( this.canvas.toJSON() );
-
-      // save via xhr
-      this.$http.post('/api/bottles', { canvas : json })
-        .then(response => {
-
-          //todo: not fixed domain
-          self.savedUrl = "http://localhost:9000/" + response.data["_id"]; //wtf?
-        });
-    }
   }
 
   angular.module('bottleBuilderApp')

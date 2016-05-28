@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Design Actions</h3>
+  </div>
+  <div class="panel-body">
+    <button type="button" class="btn btn-default" ng-click="$ctrl.save()">Save</button>
+    <input type="text" class="form-control" placeholder="Link"
+           ng-show="$ctrl.savedUrl != null"
+           ng-model="$ctrl.savedUrl"/>
+  </div>
+</div>
