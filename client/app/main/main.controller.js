@@ -51,13 +51,6 @@
           //to update visibility of actions, available only if object selected
           self.$scope.$digest();
         });
-
-        self.canvas.on('object:selected', function (options, event) {
-          var object = options.target;
-          if (object && object.get('type') === "text") {
-            self.selectedTextContent = object.getText();
-          }
-        });
       }
 
       //make transparent corners and move rotating point closer to rectangle
@@ -107,14 +100,6 @@
         activeGroup = this.canvas.getActiveGroup();
 
       return activeObject || activeGroup;
-    }
-
-    hasTextObjectSelected() {
-      var activeObject = this.canvas.getActiveObject();
-      if (activeObject) {
-        return activeObject.get('type') === "text";
-      }
-      return false;
     }
 
     updateTextContent(textContent) {

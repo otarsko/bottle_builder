@@ -32,26 +32,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Text</h3>
-        </div>
-        <div class="panel-body text_content">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Text"
-                   ng-disabled="!$ctrl.hasTextObjectSelected()"
-                   ng-model="$ctrl.selectedTextContent"/>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button"
-                      ng-disabled="!$ctrl.hasTextObjectSelected()"
-                      ng-click="$ctrl.updateTextContent($ctrl.selectedTextContent)">
-                Update
-              </button>
-            </span>
-
-          </div>
-        </div>
-      </div>
+      <text-panel canvas="$ctrl.canvas" on-text-update="$ctrl.updateTextContent(text)"></text-panel>
 
     </div>
     <div class="col-md-3">
