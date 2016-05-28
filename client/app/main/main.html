@@ -37,15 +37,7 @@
     </div>
     <div class="col-md-3">
       <images-panel on-image-click="$ctrl.addImage(image)"></images-panel>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Colors</h3>
-        </div>
-        <div class="panel-body color_pallet">
-          <ngjs-color-picker selected="labelBackground"></ngjs-color-picker>
-        </div>
-      </div>
+      <color-panel on-color-change="$ctrl.changeBackground(color)"></color-panel>
       <design-actions-panel canvas="$ctrl.canvas"></design-actions-panel>
     </div>
   </div>

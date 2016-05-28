@@ -8,12 +8,10 @@
     constructor($http, $scope) {
       this.$http = $http;
       this.$scope = $scope;
-      this.awesomeThings = [];
     }
 
     $onInit() {
       var self = this;
-      self.labelBackground = "#e1e1e1";
 
       function initProducts() {
         self.product = {
@@ -35,11 +33,7 @@
         self.canvas.setHeight(self.product.editableAreas[0].canvas.height);
         self.canvas.setWidth(self.product.editableAreas[0].canvas.width);
 
-        self.canvas.backgroundColor = self.labelBackground;
-        self.$scope.$watch('labelBackground', function (newValue, oldValue) {
-          self.canvas.backgroundColor = newValue;
-          self.canvas.renderAll();
-        });
+        self.canvas.backgroundColor = "#FFF";
 
         var elem = angular.element(document.querySelector(".canvas-container"));
         elem.ready(function () {
@@ -68,6 +62,10 @@
       self.canvas.renderAll();
     }
 
+    changeBackground(color) {
+      this.canvas.backgroundColor = color;
+      this.canvas.renderAll();
+    }
 
     deleteSelectedObject() {
       var self = this;
