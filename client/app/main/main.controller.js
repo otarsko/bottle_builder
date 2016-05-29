@@ -93,13 +93,6 @@
       this.canvas.renderAll();
     }
 
-    hasObjectOrGroupSelected() {
-      var activeObject = this.canvas.getActiveObject(),
-        activeGroup = this.canvas.getActiveGroup();
-
-      return activeObject || activeGroup;
-    }
-
     updateTextContent(textContent) {
       var textObject = this.canvas.getActiveObject();
       textObject.setText(textContent);
