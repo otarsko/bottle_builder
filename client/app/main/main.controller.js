@@ -5,9 +5,10 @@
   //todo: separate
   class MainController {
 
-    constructor($http, $scope) {
+    constructor($http, $scope, $stateParams) {
       this.$http = $http;
       this.$scope = $scope;
+      this.$stateParams = $stateParams;
     }
 
     $onInit() {
@@ -58,6 +59,16 @@
 
       initProducts();
       initCanvas();
+
+      if (this.$stateParams.designId) {
+
+        //todo: not fixed domain
+        this.$http.get('/api/bottleDesigns/' + this.$stateParams.designId)
+          .then(response => {
+
+            self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
+        });
+      }
 
       self.canvas.renderAll();
     }

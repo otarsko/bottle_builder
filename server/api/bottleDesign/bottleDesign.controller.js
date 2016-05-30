@@ -21,6 +21,16 @@ function respondWithResult(res, statusCode) {
   };
 }
 
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
@@ -32,5 +42,13 @@ function handleError(res, statusCode) {
 export function create(req, res) {
   return BottleDesign.create(req.body)
     .then(respondWithResult(res, 201))
+    .catch(handleError(res));
+}
+
+// Creates a new BottleDesign in the DB
+export function show(req, res) {
+  return BottleDesign.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }

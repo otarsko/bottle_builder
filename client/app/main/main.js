@@ -3,9 +3,7 @@
 angular.module('bottleBuilderApp')
   .config(function($stateProvider) {
     $stateProvider.state('main', {
-      url: '/',
+      url: '/:designId',
       template: '<main></main>'
     });
-
-    //todo: state for link with bottle id
   });
