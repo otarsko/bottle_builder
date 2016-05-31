@@ -5,8 +5,8 @@
   //todo: separate
   class MainController {
 
-    constructor($http, $scope, $stateParams) {
-      this.$http = $http;
+    constructor(mainService, $scope, $stateParams) {
+      this.mainService = mainService;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
     }
@@ -62,11 +62,8 @@
 
       if (this.$stateParams.designId) {
 
-        //todo: not fixed domain
-        this.$http.get('/api/bottleDesigns/' + this.$stateParams.designId)
-          .then(response => {
-
-            self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
+        this.mainService.loadBottleDesign(this.$stateParams.designId, response => {
+          self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
         });
       }
 

@@ -4,22 +4,19 @@
 
   class DesignActionsPanelController {
 
-    constructor($http) {
-      this.$http = $http;
+    constructor(mainService) {
+      this.mainService = mainService;
     }
 
+    //todo: background image not saved OR not restored properly!
     save() {
       var self = this;
 
-      var json = JSON.stringify( self.canvas.toJSON() );
+      this.mainService.saveBottleDesign(self.canvas, response => {
 
-      // save via xhr
-      self.$http.post('/api/bottleDesigns', { canvas : json })
-        .then(response => {
-
-          //todo: not fixed domain
-          self.savedUrl = "http://localhost:9000/" + response.data["_id"];
-        });
+        //todo: not fixed domain
+        self.savedUrl = "http://localhost:9000/" + response.data["_id"];
+      });
     }
   }
 
