@@ -15,7 +15,6 @@
     saveBottleDesign(canvas, callback) {
       var json = JSON.stringify(canvas.toJSON());
 
-      // save via xhr
       this.$http.post('/api/bottleDesigns', { canvas : json })
         .then(callback);
     }

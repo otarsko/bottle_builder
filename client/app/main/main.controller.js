@@ -31,10 +31,16 @@
 
       function initCanvas() {
         self.canvas = new fabric.Canvas('bottle_canvas');
+
+        if (self.$stateParams.designId) {
+
+          self.mainService.loadBottleDesign(self.$stateParams.designId, response => {
+            self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
+          });
+        }
+
         self.canvas.setHeight(self.product.editableAreas[0].canvas.height);
         self.canvas.setWidth(self.product.editableAreas[0].canvas.width);
-
-        self.canvas.backgroundColor = "#FFF";
 
         var elem = angular.element(document.querySelector(".canvas-container"));
         elem.ready(function () {
@@ -60,19 +66,11 @@
       initProducts();
       initCanvas();
 
-      if (this.$stateParams.designId) {
-
-        this.mainService.loadBottleDesign(this.$stateParams.designId, response => {
-          self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
-        });
-      }
-
       self.canvas.renderAll();
     }
 
     changeBackground(color) {
-      this.canvas.backgroundColor = color;
-      this.canvas.renderAll();
+      this.canvas.setBackgroundColor(color, this.canvas.renderAll.bind(this.canvas));
     }
 
     deleteSelectedObject() {
