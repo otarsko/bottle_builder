@@ -32,7 +32,6 @@
       function initCanvas() {
         self.canvas = new fabric.Canvas('bottle_canvas');
 
-
         self.canvas.setHeight(self.product.editableAreas[0].canvas.height);
         self.canvas.setWidth(self.product.editableAreas[0].canvas.width);
 
@@ -65,6 +64,8 @@
 
       //removing the top scale
       fabric.Object.prototype.setControlsVisibility({mt: false});
+
+      fabric.Object.NUM_FRACTION_DIGITS = 10;
 
       initProducts();
       initCanvas();
