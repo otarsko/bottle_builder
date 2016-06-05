@@ -32,12 +32,6 @@
       function initCanvas() {
         self.canvas = new fabric.Canvas('bottle_canvas');
 
-        if (self.$stateParams.designId) {
-
-          self.mainService.loadBottleDesign(self.$stateParams.designId, response => {
-            self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
-          });
-        }
 
         self.canvas.setHeight(self.product.editableAreas[0].canvas.height);
         self.canvas.setWidth(self.product.editableAreas[0].canvas.width);
@@ -49,9 +43,18 @@
         });
 
         self.canvas.on('mouse:down', function () {
+
           //to update visibility of actions, available only if object selected
           self.$scope.$digest();
         });
+
+        self.changeBackground("#FFFFFF");
+
+        if (self.$stateParams.designId) {
+          self.mainService.loadBottleDesign(self.$stateParams.designId, response => {
+            self.canvas.loadFromJSON(response.data.canvas, self.canvas.renderAll.bind(self.canvas));
+          });
+        }
       }
 
       //make transparent corners and move rotating point closer to rectangle
@@ -70,7 +73,9 @@
     }
 
     changeBackground(color) {
-      this.canvas.setBackgroundColor(color, this.canvas.renderAll.bind(this.canvas));
+      if (color) {
+        this.canvas.setBackgroundColor(color, this.canvas.renderAll.bind(this.canvas));
+      }
     }
 
     deleteSelectedObject() {
