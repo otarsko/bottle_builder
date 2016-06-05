@@ -28,5 +28,13 @@
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.15",
     "angular-colorpicker-dr": "^0.1.0"
+  },
+  "overrides": {
+    "angular-colorpicker-dr": {
+      "main": [
+        "angular-colorpicker-dr.css",
+        "angular-colorpicker-dr.js"
+      ]
+    }
   }
 }
