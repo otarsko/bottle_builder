@@ -25,9 +25,9 @@ describe('Component: mainComponent', function() {
     });
   }));
 
-  it('should attach a list of things to the controller', function() {
-    mainComponent.$onInit();
-    $httpBackend.flush();
-    mainComponent.awesomeThings.length.should.equal(4);
-  });
+  //it('should attach a list of things to the controller', function() {
+  //  mainComponent.$onInit();
+  //  $httpBackend.flush();
+  //  mainComponent.awesomeThings.length.should.equal(4);
+  //});
 });

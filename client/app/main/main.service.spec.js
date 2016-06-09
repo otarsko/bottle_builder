@@ -11,8 +11,8 @@ describe('Service: mainService', function () {
     mainService = _mainService_;
   }));
 
-  it('should do something', function () {
-    !!mainService.should.be.true;
-  });
+  //it('should do something', function () {
+  //  !!mainService.should.be.true;
+  //});
 
 });

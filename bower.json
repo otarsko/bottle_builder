@@ -27,7 +27,8 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.15",
-    "angular-colorpicker-dr": "^0.1.0"
+    "angular-colorpicker-dr": "^0.1.0",
+    "angular-mocks": "^1.5.6"
   },
   "overrides": {
     "angular-colorpicker-dr": {
