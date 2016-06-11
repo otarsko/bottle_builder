@@ -445,9 +445,22 @@ module.exports = function(grunt) {
 
     // Test settings
     karma: {
-      unit: {
+      options: {
         configFile: 'karma.conf.js',
         singleRun: true
+      },
+      unit: {},
+      coverage: {
+        preprocessors: {
+          '**/*.html': 'ng-html2js',
+          'client/{app,components}/**/*.js': ['babel', 'coverage']
+        },
+        reporters: ['spec', 'coverage'],
+        coverageReporter: {
+          type : 'html',
+          // where to store the report
+          dir : 'coverage/client/'
+        }
       }
     },
 
@@ -712,7 +725,7 @@ module.exports = function(grunt) {
         'injector',
         'postcss',
         'wiredep:test',
-        'karma'
+        'karma:unit'
       ]);
     } else if(target === 'e2e') {
       if(option === 'prod') {
@@ -738,23 +751,34 @@ module.exports = function(grunt) {
         ]);
       }
     } else if(target === 'coverage') {
-      if(option === 'unit') {
+      if (option === 'unit') {
         return grunt.task.run([
           'env:all',
           'env:test',
           'mocha_istanbul:unit'
         ]);
-      } else if(option === 'integration') {
+      } else if (option === 'integration') {
         return grunt.task.run([
           'env:all',
           'env:test',
           'mocha_istanbul:integration'
         ]);
-      } else if(option === 'check') {
+      } else if (option === 'check') {
         return grunt.task.run([
           'istanbul_check_coverage'
         ]);
-      } else {
+      } else if (option == 'client') {
+        return grunt.task.run([
+          'clean:server',
+          'env:all',
+          'concurrent:pre',
+          'concurrent:test',
+          'injector',
+          'postcss',
+          'wiredep:test',
+          'karma:coverage'
+        ]);
+      }else {
         return grunt.task.run([
           'env:all',
           'env:test',
