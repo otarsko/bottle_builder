@@ -16,7 +16,7 @@
 
   angular.module('bottleBuilderApp')
     .component('imagesPanel', {
-      templateUrl: 'app/images-panel/imagesPanel.html',
+      templateUrl: 'app/panels/images-panel/imagesPanel.html',
       controller: ImagesPanelController,
       bindings: {
         onImageClick: '&'

@@ -19,7 +19,7 @@
 
   angular.module('bottleBuilderApp')
     .component('colorPanel', {
-      templateUrl: 'app/color-panel/colorPanel.html',
+      templateUrl: 'app/panels/color-panel/colorPanel.html',
       controller: ColorPanelController,
       bindings: {
         onColorChange: '&'

@@ -20,6 +20,10 @@
     "mongoose": "^4.1.2",
     "bluebird": "^3.3.3",
     "connect-mongo": "^1.1.0",
+    "jsonwebtoken": "^6.2.0",
+    "express-jwt": "^3.0.0",
+    "passport": "~0.3.0",
+    "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
@@ -67,7 +71,7 @@
     "grunt-protractor-runner": "^3.1.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
-    "istanbul": "~0.4.1",
+    "istanbul": "~1.1.0-alpha.1",
     "jit-grunt": "~0.10.0",
     "jshint-stylish": "^2.2.0",
     "karma": "~0.13.3",

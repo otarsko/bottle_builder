@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('bottleBuilderApp', ['bottleBuilderApp.constants', 'ngCookies', 'ngResource',
+angular.module('bottleBuilderApp', ['bottleBuilderApp.constants',
+    'bottleBuilderApp.auth', 'bottleBuilderApp.admin',
+    'ngCookies', 'ngResource',
     'ngSanitize', 'ui.router', 'colorpicker-dr'
   ])
   .config(function($urlRouterProvider, $locationProvider) {

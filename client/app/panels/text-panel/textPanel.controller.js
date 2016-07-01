@@ -30,7 +30,7 @@
 
   angular.module('bottleBuilderApp')
     .component('textPanel', {
-      templateUrl: 'app/text-panel/textPanel.html',
+      templateUrl: 'app/panels/text-panel/textPanel.html',
       controller: TextPanelController,
       bindings: {
         onTextUpdate: '&',

@@ -19,7 +19,7 @@
 
   angular.module('bottleBuilderApp')
     .component('designActionsPanel', {
-      templateUrl: 'app/design-actions-panel/designActionsPanel.html',
+      templateUrl: 'app/panels/design-actions-panel/designActionsPanel.html',
       controller: DesignActionsPanelController,
       bindings: {
         canvas: '<'
